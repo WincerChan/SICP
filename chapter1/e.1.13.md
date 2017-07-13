@@ -1,0 +1,20 @@
+证明`Fib(n)`是最接近 $\phi^{n}/\sqrt{5}$ 的整数，$\phi=(1+\sqrt{5})/2$ 。题目已经给了提示，证明：$Fib(n) = (\phi^{n}-\gamma^{n})/\sqrt5$
+
+采用数学归纳法：
+
+1. 当`n = 1`时，左边：`Fib(1)` = 1，右边：当 $\gamma$ 的值为$(1-\sqrt5)/2$。所需要证明的就是当`n`越来越大的时候，$\gamma$ 趋近于 $0$ 。
+2. 假设当 `n = k `时，该算式也成立，即有：
+   1. $Fib(n)=(\phi^k-\gamma^k)/\sqrt5$
+   2. 当`n = k + 1`时，`Fib`的定义：$Fib(k+1)=Fib(k)+Fib(k-1)$
+   3. 根据`Fib`替换得：$Fib(k+1)=(\phi^{k}-\gamma^{k})/\sqrt5+(\phi^{k-1}-\gamma^{k-1}/\sqrt5)$
+   4. 根据步骤1替换：$Fib(k+1)=(\phi^{k+1}-\gamma^{k+1})/\sqrt5$
+   5. $$\Longrightarrow\frac{(\phi^{k+1}-\gamma^{k+1})}{\sqrt5}\sim\frac{(\phi^{k}-\gamma^{k})}{\sqrt5}+\frac{(\phi^{k-1}-\gamma^{k-1})}{\sqrt5}$$
+   6. $$\Longrightarrow(\phi^{k+1}-\gamma^{k+1})\sim(\phi^{k}-\gamma^{k})+(\phi^{k-1}-\gamma^{k-1})$$
+   7. $$\Longrightarrow\phi^{k+1}-\phi^k-\phi^{k-1}\sim\gamma^{k+1}-\gamma^k-\gamma^{k-1}$$
+   8. $$\Longrightarrow(\phi-1-\frac1\phi)\times\phi^k\sim\gamma^{k+1}-\gamma^k-\gamma^{k-1}$$
+   9. $$\Longrightarrow(\frac{\sqrt5+1}2-1-\frac2{\sqrt5+1})\times\phi^k\sim\gamma^{k+1}-\gamma^k-\gamma^{k-1}$$
+   10. $$\Longrightarrow(\frac{\sqrt5+1-2-\sqrt5+1}2)\times\phi^k\sim\gamma^{k+1}-\gamma^k-\gamma^{k-1}$$
+   11. $$\Longrightarrow0\sim\gamma^{k+1}-\gamma^k-\gamma^{k-1}$$
+3. 因为需要证明的是`Fib(n)`最接近$\phi^{n}/\sqrt{5}​$，而我们证明的是$(\phi^{n}-\gamma^{n})/\sqrt5​$，很显然这里是将 $\gamma​$ 当作趋近于 $0​$ 的数了，故而步骤2 得证。
+
+![](https://ws1.sinaimg.cn/large/ba22af52gy1fhibbtr6b8j20o80je771.jpg)
