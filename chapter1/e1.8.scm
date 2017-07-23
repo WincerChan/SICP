@@ -1,4 +1,3 @@
-```scheme
 (define (curt-iter guess x)
   (if (good-enough? guess x)
       guess
@@ -19,5 +18,3 @@
 
 (define (square x)
   (* x x))
-```
-
