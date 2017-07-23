@@ -1,4 +1,3 @@
-```scheme
 (define (check-prime n)
   (if (= n 2) #t
       (Miller-test 2 n)))
@@ -21,4 +20,3 @@
 
 (define (even? n)
   (= (remainder n 2) 0))
-```
