@@ -1,4 +1,3 @@
-```scheme
 (define (fast-mult a b)
   (cond ((= b 0) 0)
         ((even? b) (double (fast-mult a (halve b))))
@@ -12,6 +11,3 @@
 
 (define (double x)
   (* x 2))
-```
-
- 

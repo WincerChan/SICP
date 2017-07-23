@@ -1,4 +1,3 @@
- ```scheme
 (define (even? n)
   (= (remainder n 2) 0))
 
@@ -9,5 +8,5 @@
   (cond ((= counter 0) 1)
         ((even? counter) (square (fast-expt-iter b (/ counter 2) (* product b))))
         (else (* b (fast-expt-iter b (- counter 1) (* product b))))))
- ```
+
 
