@@ -1,4 +1,3 @@
- ```scheme
 (define (even? n)
   (= (remainder n 2) 0))
 
@@ -15,5 +14,4 @@
   (cond ((= counter 0) 0)
         ((even? counter) (double (fast-mult-iter a (halve counter) (+ product a))))
         (else (+ a (fast-mult-iter a (- counter 1) (+ product a))))))
- ```
 
