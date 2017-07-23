@@ -11,7 +11,7 @@
     (define (y k)
       (f (+ a (* k h))))
 
-    (define (factor k)
+    (define (coll k)
       (cond ((or (= k 0)(= k n))
              1)
             ((odd? k)
@@ -20,9 +20,10 @@
              2)))
 
     (define (term k)
-      (* (y k) (factor k)))
+      (* (y k) (coll k)))
 
-      (+ k 1))
+    (define (next n)
+      (+ n 1))
 
     (* (/ h 3)
        (sum term 0 next n))
