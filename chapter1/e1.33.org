@@ -1,16 +1,30 @@
 a).
 #+BEGIN_SRC scheme
-  (define (filtered-accumulate combiner null-value filter term a next b)
-    (define (term a)
+(define (filtered-accumulate combiner null-value filter term a next b)
+  (if (> a b) null-value
       (if (filter a)
-          a
-          0))
-    (define (next b) (+ b 1))
-    (if (> a b)
-        null-value
-        (combiner (term a)
-                  (filtered-accumulate combiner null-value filter term (next a) next b))))
+          (combiner (term a)
+                    (filtered-accumulate combiner null-value filter term (next a) next b))
+          (combiner null-value
+                    (filtered-accumulate combiner null-value filter term (next a) next b)))))
 
-  (define (prime-sum a b)
-    (filtered-accumulate + 0 prime? term a next b))
+(define (prime-sum a b)
+  (define (next b) (+ b 1))
+  (define (term a) a)
+  (filtered-accumulate + 0 prime? term a next b))
+#+END_SRC
+
+b).
+#+BEGIN_SRC scheme
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+
+(define (prime-product n)
+  (define (term a) a)
+  (define (next a) (+ a 1))
+  (define (filter x)
+    (= (gcd n x) 1))
+  (filtered-accumulate * 1 filter term 1 next n))
 #+END_SRC
