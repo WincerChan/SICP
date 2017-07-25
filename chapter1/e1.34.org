@@ -1,0 +1,13 @@
+#+BEGIN_SRC scheme
+  (define (f g)
+    (g 2))
+
+  =>(f square)
+  =>(square 2)
+  =>4
+
+  =>(f f)
+  =>(f 2)
+  =>(2 2)
+#+END_SRC
+然后解释器准备去调用=2=，发现并不是一个函数，就报错咯
