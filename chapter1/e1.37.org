@@ -1,0 +1,18 @@
+a).
+#+BEGIN_SRC scheme
+  (define (cont-frac n d k)
+    (if (= k 1)
+        1
+        (/ (n k) (+ (d k) (cont-frac n d (- k 1))))))
+#+END_SRC
+当k=11的时候，就与k=12的时候前四位小数相同了，即k=11时，计算结果具有4位精度
+
+#+BEGIN_SRC scheme
+(define (cont-frac n d k)
+  (iter-frac n d k 1))
+
+(define (iter-frac n d k result)
+    (if (= k 1)
+        result
+        (iter-frac n d (- k 1) (/ (n k) (+ (d k) result)))))
+#+END_SRC
