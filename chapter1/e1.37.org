@@ -1,18 +1,29 @@
 a).
 #+BEGIN_SRC scheme
+    (define (cont-frac n d k)
+      (if (= k 1)
+          1
+          (/ (n k) (+ (d k) (cont-frac n d (- k 1))))))
+
+  ;; emmmmmmm，上面的这种写法是错误的，随着递归的深入你会发现这个过程的k值是减小的，并不是增加的
+  ;; 所以我们需要维持一个新的变量i来从1增长到k
+
   (define (cont-frac n d k)
-    (if (= k 1)
-        1
-        (/ (n k) (+ (d k) (cont-frac n d (- k 1))))))
+    (define (frac i)
+      (/ (n i)
+         (+ (d i)
+            (if (= i k)
+                0
+                (frac (+ i 1))))))
+    (frac 1))
 #+END_SRC
 当k=11的时候，就与k=12的时候前四位小数相同了，即k=11时，计算结果具有4位精度
 
 #+BEGIN_SRC scheme
 (define (cont-frac n d k)
-  (iter-frac n d k 1))
-
-(define (iter-frac n d k result)
-    (if (= k 1)
+  (define (frac-iter i result)
+    (if (= i 1)
         result
-        (iter-frac n d (- k 1) (/ (n k) (+ (d k) result)))))
+        (frac-iter (- i 1) (/ (n (- i 1)) (+ (d (- i 1)) result)))))
+  (frac-iter k (/ (n k) (d k))))
 #+END_SRC
