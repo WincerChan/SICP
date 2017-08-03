@@ -1,0 +1,15 @@
+加法
+两个区间组合后的:
+lower-bound = (lower-bound x) + (lower-bound y)
+upper-bound = (upper-bound x) + (upper-bound y)
+width = (lower-bound + upper-bound) / 2
+
+区间x的宽度：
+width_x = ((lower-bound x) + (upper-bound x)) / 2
+区间y的宽度：
+width_y = ((lower-bound y) + (upper-bound y)) / 2
+
+很明显 width = width_x + width_y
+
+要证明某关系不是函数，如：y=f(x)，只需证明同一个x可计算出不止一个y出来，即：
+要说明乘和除不满足某函数，只需要证明两个区间相同的width_x和width_y可以计算出不同的width即可
