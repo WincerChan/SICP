@@ -5,4 +5,4 @@
 (car (car list2))
 
 3.
-(cdr (car (cdr (car (cdr (car (cdr (car (cdr (car (cdr list3)))))))))))
+(car (cdr (car (cdr (car (cdr (car (cdr (car (cdr (car (cdr list3))))))))))))
