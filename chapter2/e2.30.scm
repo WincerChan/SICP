@@ -1,0 +1,12 @@
+(define (square-tree x)
+  (map (lambda (sub-x)
+         (if (pair? sub-x)
+             (square-tree sub-x)
+             (square sub-x)))
+       x))
+
+(define (square-tree x)
+  (cond ((null? x) '())
+        ((not (pair? x)) (square x))
+        (else (cons (square-tree (car x))
+                    (square-tree (cdr x))))))
