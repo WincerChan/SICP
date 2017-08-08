@@ -4,5 +4,3 @@
         painter
         (let ((smaller ((split proc1 proc2) painter (- n 1))))
           (proc1 painter (proc2 smaller smaller))))))
-
-(paint ((split beside below) einstein 2))
