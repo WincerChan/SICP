@@ -11,14 +11,14 @@
 (define (make-code-tree left right)
   (list left
         right
-        (append (symbol left) (symbol right))
+        (append (symbols left) (symbols right))
         (+ (weight left) (weight right))))
 
 (define (left-branch tree) (car tree))
 
 (define (right-branch tree) (cadr tree))
 
-(define (symbol tree)
+(define (symbols tree)
   (if (leaf? tree)
       (list (symbol-leaf tree))
       (caddr tree)))
